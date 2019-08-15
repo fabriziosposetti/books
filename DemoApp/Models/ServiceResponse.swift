@@ -13,7 +13,7 @@ struct Book: Codable {
     let id: Int?
     let nombre, autor: String?
     let disponibilidad: Bool?
-    let popularidad: Int?
+    let popularidad: Int
     let imagen: String?
 }
 

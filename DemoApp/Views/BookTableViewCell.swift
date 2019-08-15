@@ -28,10 +28,11 @@ class BookTableViewCell: UITableViewCell {
         lblBookName.text = book.nombre
         lblAuthorName.text = book.autor
         lblStatus.text = book.disponibilidad == true ? "Disponible" : "No disponible"
-        fotoPerfil(urlBookImage: book.imagen!)
+        lblPriority.text = "\(book.popularidad)"
+        setBookImage(urlBookImage: book.imagen!)
     }
     
-    func fotoPerfil(urlBookImage: String?) {
+    func setBookImage(urlBookImage: String?) {
         
         if urlBookImage != "" {
             do {
@@ -45,6 +46,8 @@ class BookTableViewCell: UITableViewCell {
             catch {
                 print(error)
             }
+        } else {
+            bookImage.image = UIImage(named: "notebook")
         }
     }
 

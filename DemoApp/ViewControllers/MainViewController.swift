@@ -36,8 +36,8 @@ class MainViewController: UIViewController {
             guard let self = self else { return }
             self.stopActivityIndicator(activityIndicator: self.activityIndicator)
             if error == nil {
-              self.books = response
-              self.booksTableView.reloadData()
+                self.books = response?.sorted(by: { $0.popularidad > $1.popularidad })
+                self.booksTableView.reloadData()
             }
         }
     }
