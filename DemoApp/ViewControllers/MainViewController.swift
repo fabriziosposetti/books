@@ -10,9 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var books: [Book]?
 
     @IBOutlet weak var booksTableView: UITableView!
+    
+    var books: [Book]?
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,10 @@ class MainViewController: UIViewController {
     }
     
     private func getBooks() {
+        showActivityIndicator(activityIndicator: activityIndicator)
         DAO.instance.getBooks { [weak self] response, error in
             guard let self = self else { return }
+            self.stopActivityIndicator(activityIndicator: self.activityIndicator)
             if error == nil {
               self.books = response
               self.booksTableView.reloadData()
