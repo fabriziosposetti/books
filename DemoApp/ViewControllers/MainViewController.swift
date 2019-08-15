@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = Text.Books.description
         configureTableView()
         getBooks()
     }
@@ -53,14 +54,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookTableViewCell", for: indexPath) as! BookTableViewCell
         if let book = books?[indexPath.row] {
+            setBookImage(urlBookImage: book.imagen, imageView: cell.bookImage)
             cell.setData(book: book)
         }
-//        let url = ("\(characterResults?[indexPath.row].thumbnail!.path ?? "")/landscape_large.\(characterResults?[indexPath.row].thumbnail!.thumbnailExtension ?? "value")")
-//
-//        setImageFrom(url, cell.characterImage)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let book = books?[indexPath.row] {
+            let detailVC: BookDetailViewController = UIStoryboard(name: Storyboards.Main, bundle: nil)
+                .instantiateViewController(withIdentifier: "BookDetailViewController") as! BookDetailViewController
+            detailVC.book = book
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
     
 }
 

@@ -34,4 +34,5 @@ extension StringProtocol {
 enum Text: String, LocalizedEnum {
     
     case Error
+    case Books
 }

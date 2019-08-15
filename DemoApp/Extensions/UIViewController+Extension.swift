@@ -48,4 +48,22 @@ extension UIViewController {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
+    func setBookImage(urlBookImage: String?, imageView: UIImageView) {
+        if urlBookImage != "" {
+            do {
+                if urlBookImage != "" {
+                    let url = URL(string: urlBookImage!)
+                    let data = try Data(contentsOf: url!)
+                    let image = UIImage(data: data)
+                    imageView.image = image
+                }
+            }
+            catch {
+                print(error)
+            }
+        } else {
+            imageView.image = UIImage(named: "notebook")
+        }
+    }
+    
 }

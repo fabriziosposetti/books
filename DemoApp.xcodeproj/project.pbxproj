@@ -27,6 +27,8 @@
 		69A4ED1B23060EE5007C4EB7 /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A4ED1A23060EE5007C4EB7 /* ServiceResponse.swift */; };
 		69A4ED1E23061432007C4EB7 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A4ED1C23061432007C4EB7 /* BookTableViewCell.swift */; };
 		69A4ED1F23061432007C4EB7 /* BookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A4ED1D23061432007C4EB7 /* BookTableViewCell.xib */; };
+		69A4ED22230622D6007C4EB7 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A4ED20230622D6007C4EB7 /* BookDetailViewController.swift */; };
+		69A4ED25230623E1007C4EB7 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A4ED24230623E1007C4EB7 /* Storyboards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		69A4ED1A23060EE5007C4EB7 /* ServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResponse.swift; sourceTree = "<group>"; };
 		69A4ED1C23061432007C4EB7 /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		69A4ED1D23061432007C4EB7 /* BookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookTableViewCell.xib; sourceTree = "<group>"; };
+		69A4ED20230622D6007C4EB7 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		69A4ED24230623E1007C4EB7 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				693D99F923047CB7008388D6 /* MainViewController.swift */,
+				69A4ED20230622D6007C4EB7 /* BookDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				693D9A2E23047DBA008388D6 /* Strings.strings */,
+				69A4ED24230623E1007C4EB7 /* Storyboards.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -415,12 +421,14 @@
 			files = (
 				693D9A3823047EA8008388D6 /* DAO.swift in Sources */,
 				693D9A3523047E65008388D6 /* UIViewController+Extension.swift in Sources */,
+				69A4ED22230622D6007C4EB7 /* BookDetailViewController.swift in Sources */,
 				693D9A2C23047D87008388D6 /* StringHelper.swift in Sources */,
 				69A4ED1E23061432007C4EB7 /* BookTableViewCell.swift in Sources */,
 				693D9A3A23047ED4008388D6 /* Deal.swift in Sources */,
 				693D99FA23047CB7008388D6 /* MainViewController.swift in Sources */,
 				693D9A3C23047F01008388D6 /* Service.swift in Sources */,
 				693D99F823047CB7008388D6 /* AppDelegate.swift in Sources */,
+				69A4ED25230623E1007C4EB7 /* Storyboards.swift in Sources */,
 				693D9A2923047D53008388D6 /* Constants.swift in Sources */,
 				69A4ED1B23060EE5007C4EB7 /* ServiceResponse.swift in Sources */,
 				693D9A3323047E15008388D6 /* UIColor+Extension.swift in Sources */,

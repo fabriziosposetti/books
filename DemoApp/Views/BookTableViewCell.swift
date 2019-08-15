@@ -29,26 +29,6 @@ class BookTableViewCell: UITableViewCell {
         lblAuthorName.text = book.autor
         lblStatus.text = book.disponibilidad == true ? "Disponible" : "No disponible"
         lblPriority.text = "\(book.popularidad)"
-        setBookImage(urlBookImage: book.imagen!)
-    }
-    
-    func setBookImage(urlBookImage: String?) {
-        
-        if urlBookImage != "" {
-            do {
-                if urlBookImage != "" {
-                    let url = URL(string: urlBookImage!)
-                    let data = try Data(contentsOf: url!)
-                    let image = UIImage(data: data)
-                    bookImage.image = image
-                }
-            }
-            catch {
-                print(error)
-            }
-        } else {
-            bookImage.image = UIImage(named: "notebook")
-        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
