@@ -10,8 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-
     @IBOutlet weak var booksTableView: UITableView!
+    var btnActions: UIBarButtonItem?
     
     var books: [Book]?
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -19,9 +19,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Text.Books.description
+        self.title = Text.Libros.description
         configureTableView()
         getBooks()
+        addNavigationActions()
     }
     
     private func configureTableView() {
@@ -29,6 +30,42 @@ class MainViewController: UIViewController {
         booksTableView.dataSource = self
         booksTableView.register(UINib(nibName: BookTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: BookTableViewCell.nibName)
         booksTableView.tableFooterView = UIView()
+    }
+    
+    private func addNavigationActions() {
+        self.btnActions = UIBarButtonItem(title: Text.Acciones.description,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(showActions))
+        btnActions?.isEnabled = true
+        navigationItem.rightBarButtonItem = btnActions!
+    }
+    
+    @objc func showActions() {
+        let alertCotroller = UIAlertController(title: nil,
+                                               message: nil,
+                                               preferredStyle: .actionSheet)
+        
+        
+        let cancelAction = UIAlertAction(title: Text.Cancelar.description,
+                                           style: .default,
+                                           handler: nil)
+        
+        let reverseBookOrder = UIAlertAction(title: Text.InvertirOrden.description,
+                                             style: .default, handler: { [weak self] _ in
+                                                guard let self = self else { return }
+                                                self.reverseBookOrder()
+        })
+        
+        alertCotroller.addAction(reverseBookOrder)
+        alertCotroller.addAction(cancelAction)
+        self.present(alertCotroller, animated: true, completion: nil)
+    }
+    
+    
+    private func reverseBookOrder() {
+        self.books?.reverse()
+        self.booksTableView.reloadData()
     }
     
     private func getBooks() {
