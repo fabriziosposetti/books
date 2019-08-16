@@ -38,4 +38,5 @@ enum Text: String, LocalizedEnum {
     case Acciones
     case Cancelar
     case InvertirOrden
+    case Filtrar
 }

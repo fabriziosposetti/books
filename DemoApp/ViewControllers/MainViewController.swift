@@ -12,9 +12,17 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var booksTableView: UITableView!
     var btnActions: UIBarButtonItem?
+    @IBOutlet weak var switchAll: UISwitch!
+    @IBOutlet weak var switchAvailable: UISwitch!
+    @IBOutlet weak var switchNoAvailable: UISwitch!
+    
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+
     
     var books: [Book]?
-    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    var originalBooks: [Book]?
+    var filteredBooks = [Book]()
+
 
     
     override func viewDidLoad() {
@@ -23,6 +31,9 @@ class MainViewController: UIViewController {
         configureTableView()
         getBooks()
         addNavigationActions()
+        
+        switchAvailable.isOn = false
+        switchNoAvailable.isOn = false
     }
     
     private func configureTableView() {
@@ -39,6 +50,37 @@ class MainViewController: UIViewController {
                                              action: #selector(showActions))
         btnActions?.isEnabled = true
         navigationItem.rightBarButtonItem = btnActions!
+    }
+    
+    @IBAction func switchNoAvailableTapped(_ sender: UISwitch) {
+        if switchNoAvailable.isOn {
+            switchAll.isOn = false
+            switchAvailable.isOn = false
+            filteredBooks = (originalBooks?.filter({ $0.disponibilidad == false }))!
+            self.books = filteredBooks
+            self.booksTableView.reloadData()
+            
+        }
+    }
+    
+    @IBAction func switchAllTapped(_ sender: Any) {
+        if switchAll.isOn {
+            switchAvailable.isOn = false
+            switchNoAvailable.isOn = false
+            self.books = self.originalBooks
+            self.booksTableView.reloadData()
+        }
+    }
+    
+    
+    @IBAction func switchAvailableTapped(_ sender: UISwitch) {
+        if switchAvailable.isOn {
+            switchAll.isOn = false
+            switchNoAvailable.isOn = false
+            filteredBooks = (originalBooks?.filter({ $0.disponibilidad == true }))!
+            self.books = filteredBooks
+            self.booksTableView.reloadData()
+        }
     }
     
     @objc func showActions() {
@@ -74,6 +116,7 @@ class MainViewController: UIViewController {
             guard let self = self else { return }
             self.stopActivityIndicator(activityIndicator: self.activityIndicator)
             if error == nil {
+                self.originalBooks = response
                 self.books = response?.sorted(by: { $0.popularidad > $1.popularidad })
                 self.booksTableView.reloadData()
             }
