@@ -2,7 +2,7 @@
 
 ## Description
 
-It is a demo application that retrieves different kind of books and show them in a list. Also you can navigate to the detail of each one
+It is a demo application that retrieves different kind of books and show them in a list. Also you can navigate to the detail of each one, and you can aply filters to the list.
 
 
 
