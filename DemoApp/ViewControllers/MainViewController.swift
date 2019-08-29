@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
             switchAll.isOn = false
             switchAvailable.isOn = false
             filteredBooks = (originalBooks?.filter({ $0.disponibilidad == false }))!
-            self.books = filteredBooks
+            self.books = filteredBooks.sorted(by: { $0.popularidad > $1.popularidad })
             self.booksTableView.reloadData()
             
         }
@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
         if switchAll.isOn {
             switchAvailable.isOn = false
             switchNoAvailable.isOn = false
-            self.books = self.originalBooks
+            self.books = self.originalBooks?.sorted(by: { $0.popularidad > $1.popularidad })
             self.booksTableView.reloadData()
         }
     }
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
             switchAll.isOn = false
             switchNoAvailable.isOn = false
             filteredBooks = (originalBooks?.filter({ $0.disponibilidad == true }))!
-            self.books = filteredBooks
+            self.books = filteredBooks.sorted(by: { $0.popularidad > $1.popularidad })
             self.booksTableView.reloadData()
         }
     }
